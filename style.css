@@ -1,0 +1,45 @@
+html{
+    background-color: rgb(174, 144, 202);
+}
+
+
+#logo {
+    width: 100px;
+    height: 100px;
+  }
+
+a {
+    text-decoration: none;
+}
+
+#menu-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+      }
+  
+  
+  #menu-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 26px;
+    position: absolute;
+    top: 100%; 
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: none; 
+  }
+  
+  #menu-items.show {
+    display: block;
+  }
+  
+
+  #menu-button {
+    background-color: rgb(46, 201, 121, 0.8);
+    font-size: 26px;
+    padding: 30px 60px;
+    border-radius: 5px;
+  }
+  
