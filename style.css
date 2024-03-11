@@ -1,7 +1,12 @@
 html{
-    background-color: rgb(174, 144, 202);
+    background-color: rgb(65, 65, 82);
 }
 
+h2{
+    color: #FFFCFC;
+    font-size: 48px;
+    font-weight: lighter;
+}
 
 #logo {
     width: 100px;
@@ -16,30 +21,34 @@ a {
     position: relative;
     display: flex;
     justify-content: center;
-      }
+    
+ }
   
   
   #menu-items {
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding: 300px;
     font-size: 26px;
     position: absolute;
     top: 100%; 
     left: 50%;
     transform: translate(-50%, 0);
     display: none; 
+    background-color: #29314A;
+    width: max-content;
+    text-align: center;
+    height: max-content;
   }
   
   #menu-items.show {
-    display: block;
+    display: block;  
   }
   
 
   #menu-button {
-    background-color: rgb(46, 201, 121, 0.8);
     font-size: 26px;
-    padding: 30px 60px;
-    border-radius: 5px;
+    color: #FFFCFC;
+    cursor: crosshair;
   }
   
