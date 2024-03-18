@@ -1,27 +1,42 @@
-html{
-    background-color: rgb(65, 65, 82);
+
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
+
+
+body{
+    background-color: #414152;
+
+    font-family: "Inconsolata", monospace;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
 }
 
-h2{
-    color: #FFFCFC;
-    font-size: 48px;
-    font-weight: lighter;
-}
-
-#logo {
+h1 img{
     width: 100px;
     height: 100px;
-  }
+}
 
+
+nav li a {
+    color: #FFFCFC;
+    font-size: 48px;
+    font-weight: 200;
+}
 a {
     text-decoration: none;
 }
+p a {
+    text-decoration: underline;
+}
+
 
 #menu-container {
     position: relative;
     display: flex;
     justify-content: center;
-    
+
  }
   
   
@@ -49,6 +64,6 @@ a {
   #menu-button {
     font-size: 26px;
     color: #FFFCFC;
-    cursor: crosshair;
+    cursor: pointer;
   }
   
