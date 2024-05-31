@@ -1,69 +1,85 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
 
-
-body{
-    background-color: #414152;
-
-    font-family: "Inconsolata", monospace;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    font-variation-settings:
-        "wdth" 100;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-h1 img{
-    width: 100px;
-    height: 100px;
+body {
+  font-family: 'Inconsolata', monospace;
+  transition: background 0.3s ease-out, color 0.3s ease-out;
 }
 
-
-nav li a {
-    color: #FFFCFC;
-    font-size: 48px;
-    font-weight: 200;
-}
-a {
-    text-decoration: none;
-}
-p a {
-    text-decoration: underline;
+.noise {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./imagens/noise.png');
+  background-size: 200px; /* Ajuste o tamanho conforme necessário */
+  background-repeat: repeat;
+  opacity: .25;
+  pointer-events: none;
 }
 
 
-#menu-container {
-    position: relative;
-    display: flex;
-    justify-content: center;
 
- }
-  
-  
-  #menu-items {
-    list-style: none;
-    margin: 0;
-    padding: 300px;
-    font-size: 26px;
-    position: absolute;
-    top: 100%; 
-    left: 50%;
-    transform: translate(-50%, 0);
-    display: none; 
-    background-color: #29314A;
-    width: max-content;
-    text-align: center;
-    height: max-content;
-  }
-  
-  #menu-items.show {
-    display: block;  
-  }
-  
+section {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
 
-  #menu-button {
-    font-size: 26px;
-    color: #FFFCFC;
-    cursor: pointer;
-  }
-  
+section:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+section#aboutme {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-top: 15vh;
+}
+
+h1 {
+  font-weight: 100;
+  font-size: 80px;
+}
+
+h1 a {
+  font-weight: 300;
+  color: white;
+  text-decoration: none;
+  position: relative;
+  display: inline-block; /* Adiciona display: inline-block para o elemento "a" */
+}
+
+h1 a span {
+  display: inline-block; /* Para aplicar estilos ao "GUI" */
+  position: relative; /* Posicionar o span para animação */
+}
+
+h1 a span::after {
+  content: 'GUI'; /* Conteúdo inicial com o texto "GUI" */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Largura inicial igual à largura do "GUI" */
+  height: 100%; /* Altura total do "GUI" */
+  background-color: white;
+  overflow: hidden; /* Adiciona overflow: hidden */
+  transition: width 0.5s ease, opacity 0.5s ease; /* Transição para largura e opacidade */
+}
+
+h1 a:hover span::after {
+  content: 'GUILHERME'; /* Conteúdo final com o texto completo */
+  width: 0; /* Largura final definida como 0 para criar o efeito de encolhimento */
+  opacity: 1; /* Opacidade final definida como 1 para mostrar o texto completo */
+}

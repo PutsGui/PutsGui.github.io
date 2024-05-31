@@ -1,35 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="style.css" rel="stylesheet" type="text/css">
-    
-    <title>Gui's Work</title>
+  <meta charset="UTF-8">
+  <title>CodePen - Change background colour with GSAP ScrollTrigger</title>
+  <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-    
-    <a href="../index.html" target="_self"><h1><img id="logo" src="Logo.png"></h1></a>   
+  <!-- Adicionando o elemento para o efeito de ruído -->
+  <div class="noise"></div>
 
-    <nav id="menu-container">
-        <a id="menu-button">Menu</a>
-        <ul id="menu-items">
-          <li><a href="../about.html" target="_self">About</a></li>
-          <li><a href="./works.html" target="_self">Works</a></li>
-          <li><a href="#" target="_self">Contact</a></li>
-          <li><a href="../aulas.html" target="_self">aulas</a></li>
-        </ul>
-    <nav>
-        <h1>hi there, I'm </h1><a href="about.html">GUI</a>
-        <h1>welcome to my </h1><a href="./works.html"> portfolio</a>
-    <script>
-const menuButton = document.getElementById("menu-button");
-const menuItems = document.getElementById("menu-items");
-
-menuButton.addEventListener("click", () => {
-  menuItems.classList.toggle("show");
-});
-
-      </script>
+  <div class="container">
+    <section data-bgcolor="#29314a" data-textcolor="#ffffff">
+      <div class="title">
+        <h1>hi there, I'm <a href="#aboutme">GUI</a></h1><br><br>
+        <h1 style="padding-left: 25vw;">welcome to my <a href="">portfolio</a></h1>
+      </div>
+    </section>
+    <section id="aboutme" data-bgcolor="#62627b" data-textcolor="#536fae" >
+      <h1>About Me</h1>
+    </section>
+    <section data-bgcolor="#b49429" data-textcolor="#eacbd1"></section>
+    <section data-bgcolor="#eed552" data-textcolor="#f1dba7"></section>
+  </div>
+  
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script src="./script.js"></script>
 </body>
+
 </html>
