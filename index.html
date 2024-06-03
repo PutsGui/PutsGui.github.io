@@ -1,28 +1,76 @@
+<!--
+Nome: Guilherme Alves
+Numero de Estudante: 3210202
+Exercicio: Portfolio
+Ano Letivo: 3ºAno 2023/2024
+Semestre: 2ºSemestre
+Unidade Curricular: Laboratório de Projeto II
+Curso Superior de Design Grafico e Multimedia
+Escola Superior de Artes e Design
+Docente: Marco Heleno
+Data de Avaliação: 04-06-2024
+-->
+
 <!DOCTYPE html>
 <html>
 
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Change background colour with GSAP ScrollTrigger</title>
+  <title>Gui's Portfolio</title>
   <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-  <!-- Adicionando o elemento para o efeito de ruído -->
   <div class="noise"></div>
-
+  <div class="cursor"></div>
   <div class="container">
     <section data-bgcolor="#29314a" data-textcolor="#ffffff">
       <div class="title">
-        <h1>hi there, I'm <a href="#aboutme">GUI</a></h1><br><br>
-        <h1 style="padding-left: 25vw;">welcome to my <a href="">portfolio</a></h1>
+        <h1>hi there, I'm <a href="#aboutme" id="nameLink">GUI<span id="additionalLetters"></span></a></h1><br><br>
+        <h1 style="padding-left: 25vw;">welcome to my <a href="#projects">portfolio</a></h1>
       </div>
     </section>
-    <section id="aboutme" data-bgcolor="#62627b" data-textcolor="#536fae" >
+    
+    <section id="aboutme" data-bgcolor="#62627b" data-textcolor="#ffffff">
       <h1>About Me</h1>
+      <h3>If you didn’t catch it my name is Guilherme. I’m formed in Graphic Design and Multimedia at ESAD.cr (Escola Superior de Artes e Design, Caldas da Rainha, Portugal).
+        I started in multimedia and in university I studied lots of tools for many porpuses.
+        But what most moves me is websites and sometimes apps if I feel like it. I just finish my course but I feel it’s not enough. I want to create more, learn more, explore more. 
+        So, I hope we meet in the future :)!</h3>
+      <img src="./imagens/me.png" width="25%">
     </section>
-    <section data-bgcolor="#b49429" data-textcolor="#eacbd1"></section>
-    <section data-bgcolor="#eed552" data-textcolor="#f1dba7"></section>
+    
+    <section id="projects" data-bgcolor="#b49429" data-textcolor="#eacbd1">
+      <div class="image-wrapper">
+        <div class="image-column">
+          <div class="image-list">
+            <img src="./imagens/website1.png" alt="Projeto 1">
+            <img src="./imagens/App.png" alt="Projeto 2">
+            <img src="./imagens/website2.png" alt="Projeto 3">
+            <img src="./imagens/website3.png" alt="Projeto 4">
+          </div>
+        </div>
+        <div class="title-column">
+          <h1>Projects</h1>
+          <div class="title-list">
+            <h3 data-index="0"><a href="https://dribbble.com/shots/24226447-Flow-is-up-on-awwwards">Flow</a>
+              <span class="project-type">Website</span></h3>
+            <h3 data-index="1"><a href="https://dribbble.com/shots/20700142-Fitness-Nutrition-App">Fitness</a>
+              <span class="project-type">Mobile App</span></h3>
+            <h3 data-index="2"><a href="https://dribbble.com/shots/22617452-Ephemeral-Elegance-Special-Art-Exhibition-Website">Special Art</a>
+              <span class="project-type">Website</span></h3>
+            <h3 data-index="3" class="last-in-column"><a href="https://dribbble.com/shots/20624068-Nature-Inspired-Architecture-Website-Web-Design">Nest</a>
+              <span class="project-type">Website</span></h3>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="contacts" data-bgcolor="#2c2f33" data-textcolor="#ffffff">
+      <h1>Contacts</h1>
+      <h2 style="padding-top: 2vh;">Want to work together on a Project?</h2>
+      <h2 style="padding-top: 2vh;"><a href="mailto:guiabc777@gmail.com">Get in touch with me by email</a></h2>
+    </section>
   </div>
   
   <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>

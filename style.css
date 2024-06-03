@@ -8,7 +8,38 @@
 
 body {
   font-family: 'Inconsolata', monospace;
-  transition: background 0.3s ease-out, color 0.3s ease-out;
+  transition: 0.3s ease-out, color 0.3s ease-out;
+  cursor: none;
+}
+
+.cursor {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.3s;
+}
+
+.cursor.hovered {
+  transform: scale(1.5);
+  border: 2px solid #fff;
+}
+
+.cursor::before {
+  content: '';
+  display: block;
+  width: 2px;
+  height: 2px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .noise {
@@ -19,13 +50,11 @@ body {
   width: 100%;
   height: 100%;
   background-image: url('./imagens/noise.png');
-  background-size: 200px; /* Ajuste o tamanho conforme necessário */
+  background-size: 200px; 
   background-repeat: repeat;
   opacity: .25;
   pointer-events: none;
 }
-
-
 
 section {
   height: 100vh;
@@ -41,13 +70,6 @@ section:first-child {
   justify-content: center;
 }
 
-section#aboutme {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding-top: 15vh;
-}
-
 h1 {
   font-weight: 100;
   font-size: 80px;
@@ -58,28 +80,134 @@ h1 a {
   color: white;
   text-decoration: none;
   position: relative;
-  display: inline-block; /* Adiciona display: inline-block para o elemento "a" */
+  cursor: none;
 }
 
-h1 a span {
-  display: inline-block; /* Para aplicar estilos ao "GUI" */
-  position: relative; /* Posicionar o span para animação */
+h1 a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background-color: white;
+  transition: width 0.5s;
 }
 
-h1 a span::after {
-  content: 'GUI'; /* Conteúdo inicial com o texto "GUI" */
+h1 a:hover::after {
+  width: 100%;
+}
+
+section#aboutme {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 10vh;
+  position: relative;
+}
+
+section#aboutme img {
+  position: absolute;
+  right: 10vw;
+  top: 25vh;
+}
+
+section#aboutme h3 {
+  width: 50%;
+  padding-top: 10vh;
+  font-weight: 100;
+  font-size: 26px;
+}
+
+section#projects {
+  padding-top: 10vh;
+}
+
+.image-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.image-column {
+  grid-column: 1 / 2;
+}
+
+.title-column {
+  grid-column: 2 / 3;
+}
+
+.image-list {
+  position: relative;
+}
+
+.image-list img {
+  width: 100%;
+  height: 60vh;
+  opacity: 0;
+  transition: opacity 0.3s ease;
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%; /* Largura inicial igual à largura do "GUI" */
-  height: 100%; /* Altura total do "GUI" */
-  background-color: white;
-  overflow: hidden; /* Adiciona overflow: hidden */
-  transition: width 0.5s ease, opacity 0.5s ease; /* Transição para largura e opacidade */
+  border-radius: 50% 20% / 10% 40%;
 }
 
-h1 a:hover span::after {
-  content: 'GUILHERME'; /* Conteúdo final com o texto completo */
-  width: 0; /* Largura final definida como 0 para criar o efeito de encolhimento */
-  opacity: 1; /* Opacidade final definida como 1 para mostrar o texto completo */
+.image-list img.active {
+  opacity: 1;
+}
+
+.title-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
+
+.title-list h3 {
+  cursor: pointer;
+  font-weight: 100;
+  font-size: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid white;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.title-list h3 a {
+  text-decoration: none;
+}
+
+.last-in-column {
+  border-bottom: 1px solid white;
+}
+
+.project-type {
+  font-weight: normal;
+  color: gray;
+}
+
+section#contacts {
+  height: 70vh;
+}
+
+h2 {
+  font-weight: 100;
+  font-size: 30px;
+}
+
+a {
+  cursor: none;
+}
+
+#contacts h2 a {
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid currentColor;
+}
+
+#contacts h2 a:hover,
+#contacts h2 a:focus,
+#contacts h2 a:active {
+  color: inherit;
 }
