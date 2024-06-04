@@ -1,18 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
 
-* {
+* { /* Remover Margin e padding de todos os elementos*/
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
+body { /* Defenir a fonte, Transição da cor do background e eliminar o cursor*/
   font-family: 'Inconsolata', monospace;
   transition: 0.3s ease-out, color 0.3s ease-out;
   cursor: none;
 }
 
-.cursor {
+.cursor { /* Personalização do Cursor*/
   position: fixed;
   width: 40px;
   height: 40px;
@@ -24,12 +24,12 @@ body {
   transition: transform 0.3s;
 }
 
-.cursor.hovered {
+.cursor.hovered { /* Personalização do Cursor quando em estado hover*/
   transform: scale(1.5);
   border: 2px solid #fff;
 }
 
-.cursor::before {
+.cursor::before { /* Personalização do Cursor do centro */
   content: '';
   display: block;
   width: 2px;
@@ -42,7 +42,7 @@ body {
   transform: translate(-50%, -50%);
 }
 
-.noise {
+.noise { /* Camada de ruido*/
   position: fixed;
   z-index: 9999;
   top: 0;
@@ -56,7 +56,7 @@ body {
   pointer-events: none;
 }
 
-section {
+section { /* Estilo geral da das Secções */
   height: 100vh;
   width: 100%;
   position: relative;
@@ -64,18 +64,18 @@ section {
   padding-right: 5vw;
 }
 
-section:first-child {
+section:first-child { /* Estilo Primeira secção*/
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-h1 {
+h1 { /* estilizar o tipo de letra h1 */
   font-weight: 100;
   font-size: 80px;
 }
 
-h1 a {
+h1 a { /* estilizar o tipo de letra A dentro do H1 */
   font-weight: 300;
   color: white;
   text-decoration: none;
@@ -83,7 +83,7 @@ h1 a {
   cursor: none;
 }
 
-h1 a::after {
+h1 a::after { /* Animar os links do titulo */
   content: '';
   position: absolute;
   left: 0;
@@ -94,11 +94,11 @@ h1 a::after {
   transition: width 0.5s;
 }
 
-h1 a:hover::after {
+h1 a:hover::after { /* quando utilizando o hover no titulo a width passa para 100%*/
   width: 100%;
 }
 
-section#aboutme {
+section#aboutme { /* Estilo secção about me*/
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -106,42 +106,42 @@ section#aboutme {
   position: relative;
 }
 
-section#aboutme img {
+section#aboutme img { /* Posição da Imagem*/
   position: absolute;
   right: 10vw;
   top: 25vh;
 }
 
-section#aboutme h3 {
+section#aboutme h3 { /* Posição e estilização do Titulo */
   width: 50%;
   padding-top: 10vh;
   font-weight: 100;
   font-size: 26px;
 }
 
-section#projects {
+section#projects { /* Estilo secção projects*/
   padding-top: 10vh;
 }
 
-.image-wrapper {
+.image-wrapper { /*definir o grid e criar 2 colunas iguais */
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
 
-.image-column {
+.image-column { /* Defenir qual é a coluna das imagens */
   grid-column: 1 / 2;
 }
 
-.title-column {
+.title-column { /* Defenir qual é a coluna dos projetos */
   grid-column: 2 / 3;
 }
 
-.image-list {
+.image-list { /* Posicionar as imagens */
   position: relative;
 }
 
-.image-list img {
+.image-list img { /* Estilização das imagens */
   width: 100%;
   height: 60vh;
   opacity: 0;
@@ -152,17 +152,17 @@ section#projects {
   border-radius: 50% 20% / 10% 40%;
 }
 
-.image-list img.active {
+.image-list img.active { /* Opacidade da imagem que tem o hover */
   opacity: 1;
 }
 
-.title-list {
+.title-list { /* Estilização da lista dos projetos */
   display: flex;
   flex-direction: column;
   margin-top: 40px;
 }
 
-.title-list h3 {
+.title-list h3 { /* Estilização do conteudo dentro da lista de projetos */
   cursor: pointer;
   font-weight: 100;
   font-size: 30px;
@@ -174,33 +174,33 @@ section#projects {
   padding-bottom: 20px;
 }
 
-.title-list h3 a {
+.title-list h3 a { /* Tirar a decoração dos links */
   text-decoration: none;
 }
 
-.last-in-column {
+.last-in-column { /* aplicar uma border no ultimo item */
   border-bottom: 1px solid white;
 }
 
-.project-type {
+.project-type { /* estilizar o tipo de projeto */
   font-weight: normal;
   color: gray;
 }
 
-section#contacts {
+section#contacts { /* definir altura da secção contactos */
   height: 70vh;
 }
 
-h2 {
+h2 { /* estilizar o tipo de letra h2 */
   font-weight: 100;
   font-size: 30px;
 }
 
-a {
+a { /* não aparecer a "mao" quando se faz hover num link */
   cursor: none;
 }
 
-#contacts h2 a {
+#contacts h2 a { /* aplicar a border por baixo do link*/
   text-decoration: none;
   color: inherit;
   border-bottom: 1px solid currentColor;
@@ -208,6 +208,6 @@ a {
 
 #contacts h2 a:hover,
 #contacts h2 a:focus,
-#contacts h2 a:active {
+#contacts h2 a:active { /* independentemente dos estados o texto ficar com a mesma cor*/
   color: inherit;
 }
