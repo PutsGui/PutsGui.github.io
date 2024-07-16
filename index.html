@@ -52,11 +52,11 @@ Data de Avaliação: 04-06-2024
         <div class="title-column">
           <h1>Projects</h1>
           <div class="title-list">
-            <h3 data-index="0" data-project="project1"><a href="#">166studio</a>
+            <h3 data-index="0" data-project="project1"><a href="#" class="project-link">166studio</a>
               <span class="project-type">Website</span></h3>
-            <h3 data-index="1" data-project="project2"><a href="#">Trip Planner</a>
+            <h3 data-index="1" data-project="project2"><a href="#" class="project-link">Trip Planner</a>
               <span class="project-type">Mobile App</span></h3>
-            <h3 data-index="2" data-project="project3"><a href="#">Rapsody Roullette</a>
+            <h3 data-index="2" data-project="project3"><a href="#" class="project-link">Rapsody Roullette</a>
               <span class="project-type">Website</span></h3>
             <!--<h3 data-index="3" data-project="project4" class="last-in-column"><a href="#">Nest</a>
               <span class="project-type">Website</span></h3>-->
@@ -64,22 +64,21 @@ Data de Avaliação: 04-06-2024
         </div>
       </div>
     
-      <!-- Popup container -->
-      <div id="popup" class="popup">
-        <span class="close">&times;</span>
-        <div class="popup-content">
-          <div class="popup-images">
-            <img src="./imagens/projeto1-imagem1.png" alt="Projeto 1 Imagem 1">
-            <img src="./imagens/projeto1-imagem2.png" alt="Projeto 1 Imagem 2">
-            <img src="./imagens/projeto1-imagem3.png" alt="Projeto 1 Imagem 3">
+      <!-- Popup HTML -->
+      <div class="popup" id="popup">
+        <div class="popup-inner">
+          <div class="popup__photo">
+            <img id="popup-image" src="" alt="">
           </div>
-          <div class="popup-text">
-            <h2>Título do Projeto</h2>
-            <p>Descrição detalhada do projeto. Aqui você pode incluir informações sobre o objetivo, as tecnologias usadas, os desafios enfrentados e os resultados obtidos.</p>
+          <div class="popup__text">
+            <h1 id="popup-title"></h1>
+            <p id="popup-description"></p>
           </div>
+          <a class="popup__close" href="#" id="close-popup">X</a>
         </div>
       </div>
     </section>
+    
     
     
     <section id="contacts" data-bgcolor="#2c2f33" data-textcolor="#ffffff">

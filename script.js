@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
           }
       });
   });
-
+});
   // Mudança de cor de fundo e texto ao rolar a página
   gsap.registerPlugin(ScrollTrigger);
 
@@ -97,49 +97,44 @@ document.addEventListener('DOMContentLoaded', function() {
       cursor.classList.remove('hovered');
   }
 
-  // Efeito de imagem no projeto
-  const images = document.querySelectorAll('.image-list img');
-  const titles = document.querySelectorAll('.title-list h3');
-  const popup = document.getElementById('popup');
-  const closeBtn = document.querySelector('.close');
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const projects = [
+        {
+            title: "166studio",
+            description: "Criei um site inovador para um estúdio composto por um animador e um ilustrador, inspirado na arquitetura portuguesa. O design do site simula um prédio, destacando-se pelo uso de azulejos típicos de Portugal, que conferem um toque autêntico e cultural. A interface é intuitiva e visualmente atraente, proporcionando uma navegação agradável enquanto reflete a criatividade e o talento dos artistas do estúdio.",
+            image: "./imagens/Screenshot 2024-07-03 at 13.41.51.png"
+        },
+        {
+            title: "Trip Planner",
+            description: "Desenvolvi uma aplicação inovadora que utiliza Inteligência Artificial para ajudar os usuários a planejar suas viagens. Após responder a algumas perguntas simples, a IA cria um itinerário personalizado, sugerindo locais de interesse de acordo com as preferências e necessidades do usuário. Esta aplicação é ideal para quem deseja uma experiência de viagem personalizada sem o esforço de planejar todos os detalhes.",
+            image: "./imagens/81678.jpg"
+        },
+        {
+            title: "Rapsody Roullette",
+            description: "Desenvolvi um site voltado para pessoas que procuram descobrir novas músicas de acordo com o gênero e o estado de espírito. Com uma interface amigável e intuitiva, o site permite que os usuários selecionem seu gênero musical preferido e seu mood atual, gerando uma playlist aleatória que se adapta ao momento. Ideal para quem não sabe o que ouvir e está em busca de novas experiências musicais.            ",
+            image: "./imagens/musicrandom.jpg"
+        }
+    ];
 
-  titles.forEach((title, index) => {
-      title.addEventListener('mouseenter', () => {
-          images.forEach(img => img.style.opacity = 0);
+    document.querySelectorAll('.project-link').forEach((link, index) => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            const project = projects[index];
+            document.getElementById('popup-title').innerText = project.title;
+            document.getElementById('popup-description').innerText = project.description;
+            document.getElementById('popup-image').src = project.image;
+            document.getElementById('popup').classList.add('visible');
+        });
+    });
 
-          const dataIndex = parseInt(title.getAttribute('data-index'));
-          images[dataIndex].style.opacity = 1;
-      });
+    document.getElementById('close-popup').addEventListener('click', (event) => {
+        event.preventDefault();
+        document.getElementById('popup').classList.remove('visible');
+    });
 
-      title.addEventListener('mouseleave', () => {
-          images.forEach(img => img.style.opacity = 0);
-      });
-
-      title.addEventListener('click', () => {
-          const projectID = title.getAttribute('data-project');
-          const projectDetails = document.getElementById(projectID);
-
-          // Esconder todos os detalhes do projeto
-          document.querySelectorAll('.project-details').forEach(detail => {
-              detail.style.display = 'none';
-          });
-
-          // Mostrar os detalhes do projeto clicado
-          projectDetails.style.display = 'block';
-
-          popup.style.display = 'block';
-      });
-  });
-
-  // Fechar o popup quando o usuário clicar no <span> (x)
-  closeBtn.addEventListener('click', () => {
-      popup.style.display = 'none';
-  });
-
-  // Fechar o popup quando o usuário clicar fora do popup
-  window.addEventListener('click', (event) => {
-      if (event.target === popup) {
-          popup.style.display = 'none';
-      }
-  });
-}); // Chave que fecha a função DOMContentLoaded
+    window.addEventListener('click', (event) => {
+        if (event.target.classList.contains('popup')) {
+            document.getElementById('popup').classList.remove('visible');
+        }
+    });
+});
