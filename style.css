@@ -70,9 +70,16 @@ section:first-child { /* Estilo Primeira secção*/
   justify-content: center;
 }
 
-h1 { /* estilizar o tipo de letra h1 */
+h1, h2 { /* estilizar o tipo de letra h1 e h2 */
   font-weight: 100;
+}
+
+h1 {
   font-size: 80px;
+}
+
+h2 {
+  font-size: 30px;
 }
 
 h1 a { /* estilizar o tipo de letra A dentro do H1 */
@@ -109,7 +116,7 @@ section#aboutme { /* Estilo secção about me*/
 section#aboutme img { /* Posição da Imagem*/
   position: absolute;
   right: 10vw;
-  top: 25vh;
+
 }
 
 section#aboutme h3 { /* Posição e estilização do Titulo */
@@ -130,30 +137,66 @@ section#projects { /* Estilo secção projects*/
 }
 
 .image-column { /* Defenir qual é a coluna das imagens */
-  grid-column: 1 / 2;
+  position: relative;
+  width: 50%;
+  height: 60vh;
+  overflow: visible; /* Permitir que a forma orgânica ultrapasse os limites */
 }
 
 .title-column { /* Defenir qual é a coluna dos projetos */
   grid-column: 2 / 3;
 }
 
-.image-list { /* Posicionar as imagens */
+.image-list {
   position: relative;
-}
-
-.image-list img { /* Estilização das imagens */
   width: 100%;
-  height: 60vh;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-radius: 50% 20% / 10% 40%;
+  height: 100%;
 }
 
-.image-list img.active { /* Opacidade da imagem que tem o hover */
-  opacity: 1;
+.image-list img {
+  position: absolute;
+  top: 50%;
+  left: 85%; 
+  transform: translate(-50%, -50%);
+  width: 156%; 
+  height: 86%; 
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1;
+  border-radius: 30% 70% 20% 80% / 60% 30% 70% 40%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.1));
+  pointer-events: none; 
+}
+
+/* Garantir que as imagens sejam visíveis quando ativas */
+.image-list img[style*="opacity: 1"] {
+  z-index: 2;
+  transform: translate(-50%, -50%) scale(1.05); /* Leve aumento ao mostrar */
+}
+
+/* Animação sutil para a forma orgânica - com 4 cantos distintos */
+@keyframes morphShape {
+  0% {
+    border-radius: 30% 70% 20% 80% / 60% 30% 70% 40%;
+  }
+  25% {
+    border-radius: 20% 80% 30% 70% / 50% 40% 60% 50%;
+  }
+  50% {
+    border-radius: 25% 75% 40% 60% / 40% 50% 50% 60%;
+  }
+  75% {
+    border-radius: 40% 60% 30% 70% / 60% 40% 60% 40%;
+  }
+  100% {
+    border-radius: 30% 70% 20% 80% / 60% 30% 70% 40%;
+  }
+}
+
+.image-list img {
+  animation: morphShape 12s ease-in-out infinite;
 }
 
 .title-list { /* Estilização da lista dos projetos */
@@ -172,10 +215,13 @@ section#projects { /* Estilo secção projects*/
   border-top: 1px solid white;
   padding-top: 20px;
   padding-bottom: 20px;
+  position: relative;
+  z-index: 5; /* Valor mais alto que as imagens de preview */
 }
 
 .title-list h3 a { /* Tirar a decoração dos links */
   text-decoration: none;
+  color: white;
 }
 
 .last-in-column { /* aplicar uma border no ultimo item */
@@ -184,77 +230,205 @@ section#projects { /* Estilo secção projects*/
 
 .project-type { /* estilizar o tipo de projeto */
   font-weight: normal;
-  color: gray;
+  color: white;
+  cursor: pointer;
+  position: relative;
+  z-index: 5; /* Valor mais alto que as imagens de preview */
 }
 
-.popup {
-  display: none; /* Inicialmente escondido */
-  position: fixed; /* Fixa o popup na tela */
-  z-index: 1000; /* Coloca o popup acima de outros elementos */
-  left: 0;
+/* Popup de Projeto */
+.project-popup {
+  position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.8); /* Fundo preto com opacidade */
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.popup-inner {
+.project-popup.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup-container {
   position: relative;
-  margin: 10% auto;
-  padding: 20px;
-  width: 80%;
-  max-width: 800px;
+  width: 90%;
+  max-width: 1200px;
+  max-height: 90vh;
+  height: 70vh;
   background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.popup-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.popup__photo img {
-  width: 100%;
-  height: auto;
-  max-width: 300px; /* ajuste conforme necessário */
-}
-
-.popup__text {
-  padding: 20px;
-  max-width: 40%;
-}
-
-.popup__text h1 {
-  margin-top: 0;
-}
-
-.popup__close {
-  position: absolute;
-  top: 10px;
-  right: 25px;
-  color: #fff;
-  font-size: 35px;
-  font-weight: bold;
+  color: white;
+  font-size: 24px;
   cursor: pointer;
+  z-index: 10;
+}
+
+.popup-content {
+  display: flex;
+  height: 100%;
+}
+
+.popup-info {
+  width: 40%;
+  padding: 30px;
+  overflow-y: auto;
+  background-color: #281f1f;
+}
+
+.popup-gallery {
+  background-color: #000;
+  position: relative;
+  width: 60%;
+}
+
+.gallery-container {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.gallery-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-container img.active {
+  opacity: 1;
+}
+
+.gallery-controls {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.gallery-prev,
+.gallery-next {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+}
+
+.gallery-dots {
+  display: flex;
+  gap: 10px;
+}
+
+.gallery-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+
+.gallery-dot.active {
+  background-color: white;
+}
+
+#popup-title {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 28px;
+  color: #fff;
+  font-weight: 600;
+  display: block;
+  visibility: visible;
+}
+
+.popup-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+  visibility: visible;
+}
+
+.popup-tag {
+  padding: 5px 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  font-size: 14px;
+  color: #ccc;
+  display: inline-block;
+  visibility: visible;
+}
+
+#popup-description {
+  margin-bottom: 30px;
+  line-height: 1.6;
+  color: #bbb;
+  font-size: 16px;
+  display: block;
+  visibility: visible;
+}
+
+.popup-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  visibility: visible;
+}
+
+.popup-link {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
   text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.2s ease;
+  font-weight: 500;
+  display: inline-block;
+  visibility: visible;
 }
 
-/* Ajuste para que o popup seja visível */
-.popup.visible {
-  display: flex; /* Altera para flex para mostrar o popup */
+.popup-link:hover {
+  background-color: #2980b9;
 }
-
-/* Hide project details by default */
-.project-details {
-  display: none;
-}
-
 
 section#contacts { /* definir altura da secção contactos */
   height: 70vh;
-}
-
-h2 { /* estilizar o tipo de letra h2 */
-  font-weight: 100;
-  font-size: 30px;
 }
 
 a { /* não aparecer a "mao" quando se faz hover num link */
@@ -271,4 +445,179 @@ a { /* não aparecer a "mao" quando se faz hover num link */
 #contacts h2 a:focus,
 #contacts h2 a:active { /* independentemente dos estados o texto ficar com a mesma cor*/
   color: inherit;
+}
+
+.copy-message {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+  z-index: 1000;
+}
+
+.copy-message.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+#particles-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Manter apenas estas regras que são as corretas */
+h1 a[href="#projects"].hover-effect {
+  transform: scale(1.1);
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+h1 a[href="#projects"] {
+  transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+/* Verificar se há estilos para .popup-overlay */
+.popup-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+/* Consolidar em uma única regra */
+body, a {
+  cursor: none;
+}
+
+/* Simplificar seletores com !important desnecessários */
+#popup-title {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 28px;
+  color: #fff;
+  font-weight: 600;
+  display: block;
+  visibility: visible;
+}
+
+.popup-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+  visibility: visible;
+}
+
+.popup-tag {
+  padding: 5px 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  font-size: 14px;
+  color: #ccc;
+  display: inline-block;
+  visibility: visible;
+}
+
+#popup-description {
+  margin-bottom: 30px;
+  line-height: 1.6;
+  color: #bbb;
+  font-size: 16px;
+  display: block;
+  visibility: visible;
+}
+
+.popup-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  visibility: visible;
+}
+
+.popup-link {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.2s ease;
+  font-weight: 500;
+  display: inline-block;
+  visibility: visible;
+}
+
+/* Simplificar seletores específicos */
+.popup, .popup-container, .popup-content, .popup-gallery, .popup-info,
+#popup-title, .popup-tags, .popup-tag, #popup-description, .popup-links, .popup-link {
+  cursor: default;
+}
+
+.popup-close, .gallery-prev, .gallery-next, .gallery-dot, .popup-link {
+  cursor: pointer;
+}
+
+/* E adicionar uma media query consolidada */
+@media (max-width: 767px) {
+  /* Estilos para o popup */
+  .popup-content {
+    flex-direction: column;
+  }
+  
+  .popup-gallery,
+  .popup-info {
+    width: 100%;
+  }
+  
+  .popup-gallery {
+    height: 40vh;
+  }
+  
+  .popup-info {
+    padding: 20px;
+  }
+  
+  /* Estilos para as imagens */
+  .image-column {
+    width: 100%;
+    height: 40vh;
+  }
+  
+  .image-list img {
+    width: 151%;
+    height: 79%;
+    left: 70%;
+  }
+  
+  /* Outros ajustes responsivos */
+  h1 {
+    font-size: 60px;
+  }
+  
+  section#aboutme h3 {
+    width: 90%;
+  }
+  
+  .image-wrapper {
+    grid-template-columns: 1fr;
+  }
+  
+  .title-column {
+    grid-column: 1;
+  }
 }

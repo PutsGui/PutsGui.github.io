@@ -1,16 +1,3 @@
-<!--
-Nome: Guilherme Alves
-Numero de Estudante: 3210202
-Exercicio: Portfolio
-Ano Letivo: 3ºAno 2023/2024
-Semestre: 2ºSemestre
-Unidade Curricular: Laboratório de Projeto II
-Curso Superior de Design Grafico e Multimedia
-Escola Superior de Artes e Design
-Docente: Marco Heleno
-Data de Avaliação: 04-06-2024
--->
-
 <!DOCTYPE html>
 <html>
 
@@ -21,32 +8,31 @@ Data de Avaliação: 04-06-2024
 </head>
 
 <body>
+  <canvas id="particles-canvas"></canvas>
   <div class="noise"></div>
   <div class="cursor"></div>
   <div class="container">
-    <section data-bgcolor="#29314a" data-textcolor="#ffffff">
+    <section data-bgcolor="#2C3E50" data-textcolor="#ffffff">
       <div class="title">
         <h1>hi there, I'm <a href="#aboutme" id="nameLink">GUI<span id="additionalLetters"></span></a></h1><br><br>
-        <h1 style="padding-left: 25vw;">welcome to my <a href="#projects">portfolio</a></h1>
+        <h1 style="padding-left: 25vw;">welcome to my <a href="#projects" id="nameLink">portfolio</a></h1>
       </div>
     </section>
     
-    <section id="aboutme" data-bgcolor="#62627b" data-textcolor="#ffffff">
+    <section id="aboutme" data-bgcolor="#4A569D" data-textcolor="#ffffff">
       <h1>About Me</h1>
-      <h3>If you didn’t catch it, my name is Guilherme. I graduated in Graphic Design and Multimedia from ESAD.cr (Escola Superior de Artes e Design, Caldas da Rainha, Portugal). I started in multimedia, and during my time at university, I studied many tools for various purposes. However, what excites me the most is creating websites, and sometimes apps, when I feel inspired. I just finished my course, but I feel it’s not enough. I want to create more, learn more, and explore more. I hope we meet in the future :)!
-
+      <h3>If you didn't catch it, my name is Guilherme. I graduated in Graphic Design and Multimedia from ESAD.cr (Escola Superior de Artes e Design, Caldas da Rainha, Portugal). I started in multimedia, and during my time at university, I studied many tools for various purposes. However, what excites me the most is creating websites, and sometimes apps, when I feel inspired. I just finished my course, but I feel it's not enough. I want to create more, learn more, and explore more. I hope we meet in the future :)!
       </h3>
-      <img src="./imagens/me.png" width="25%">
+      <img src="./imagens/moldura-cor.png" width="35%">
     </section>
     
-    <section id="projects" data-bgcolor="#b49429" data-textcolor="#eacbd1">
+    <section id="projects" data-bgcolor="#7E5686" data-textcolor="#ffffff">
       <div class="image-wrapper">
         <div class="image-column">
           <div class="image-list">
             <img src="./imagens/Screenshot 2024-07-03 at 13.41.51.png" alt="Projeto 1">
-            <img src="./imagens/81678.jpg" alt="Projeto 2">
-            <img src="./imagens/musicrandom.jpg" alt="Projeto 3">
-            <!--<img src="./imagens/website3.png" alt="Projeto 4">-->
+            <img src="./imagens/cartaz.jpg" alt="Projeto 2">
+            <img src="./imagens/Imprimir cartaz-01.jpg" alt="Projeto 3">
           </div>
         </div>
         <div class="title-column">
@@ -54,37 +40,66 @@ Data de Avaliação: 04-06-2024
           <div class="title-list">
             <h3 data-index="0" data-project="project1"><a href="#" class="project-link">166studio</a>
               <span class="project-type">Website</span></h3>
-            <h3 data-index="1" data-project="project2"><a href="#" class="project-link">Trip Planner</a>
-              <span class="project-type">Mobile App</span></h3>
-            <h3 data-index="2" data-project="project3"><a href="#" class="project-link">Rapsody Roullette</a>
-              <span class="project-type">Website</span></h3>
-            <!--<h3 data-index="3" data-project="project4" class="last-in-column"><a href="#">Nest</a>
-              <span class="project-type">Website</span></h3>-->
+            <h3 data-index="1" data-project="project2"><a href="#" class="project-link">Olha, Vê, Repara</a>
+              <span class="project-type">Event Design</span></h3>
+            <h3 data-index="2" data-project="project3"><a href="#" class="project-link">Rubik's Cube</a>
+              <span class="project-type">Augmented Reality</span></h3>
           </div>
         </div>
       </div>
     
-      <!-- Popup HTML -->
-      <div class="popup" id="popup">
-        <div class="popup-inner">
-          <div class="popup__photo">
-            <img id="popup-image" src="" alt="">
+      <!-- Novo Popup HTML -->
+      <div class="project-popup" id="project-popup">
+        <div class="popup-overlay"></div>
+        <div class="popup-container">
+          <div class="popup-close" id="popup-close">
+            <svg viewBox="0 0 24 24" width="24" height="24">
+              <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+            </svg>
           </div>
-          <div class="popup__text">
-            <h1 id="popup-title"></h1>
-            <p id="popup-description"></p>
+          
+          <div class="popup-content">
+            <div class="popup-gallery">
+              <div class="gallery-container" id="gallery-container">
+                <!-- As imagens serão inseridas aqui via JavaScript -->
+              </div>
+              <div class="gallery-controls">
+                <button class="gallery-prev" id="gallery-prev">
+                  <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+                  </svg>
+                </button>
+                <div class="gallery-dots" id="gallery-dots">
+                  <!-- Os pontos serão inseridos aqui via JavaScript -->
+                </div>
+                <button class="gallery-next" id="gallery-next">
+                  <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            
+            <div class="popup-info">
+              <h2 id="popup-title"></h2>
+              <div class="popup-tags" id="popup-tags">
+                <!-- As tags serão inseridas aqui via JavaScript -->
+              </div>
+              <div class="popup-description" id="popup-description"></div>
+              <div class="popup-links" id="popup-links">
+                <!-- Os links serão inseridos aqui via JavaScript -->
+              </div>
+            </div>
           </div>
-          <a class="popup__close" href="#" id="close-popup">X</a>
         </div>
       </div>
     </section>
     
-    
-    
-    <section id="contacts" data-bgcolor="#2c2f33" data-textcolor="#ffffff">
+    <section id="contacts" data-bgcolor="#DC2430" data-textcolor="#ffffff">
       <h1>Contacts</h1>
       <h2 style="padding-top: 2vh;">Want to work together on a Project?</h2>
-      <h2 style="padding-top: 2vh;"><a href="mailto:guiabc777@gmail.com">Get in touch with me by email</a></h2>
+      <h2 style="padding-top: 2vh;"><a href="#" id="copyEmailBtn" data-email="guiabc777@gmail.com">Get in touch with me by email</a></h2>
+      <div id="copyMessage" class="copy-message">Email copiado para o clipboard!</div>
     </section>
   </div>
   
