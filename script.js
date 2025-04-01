@@ -167,9 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
       title: "166studio",
       description: "Criei um site inovador para um estúdio composto por um animador e um ilustrador, inspirado na arquitetura portuguesa. O design do site simula um prédio, destacando-se pelo uso de azulejos típicos de Portugal, que conferem um toque autêntico e cultural.",
       images: [
-        "./imagens/Screenshot 2024-07-03 at 13.41.51.png",
-        "./imagens/imagem.jpg",
-        "./imagens/166studio-3.jpg"
+        "./imagens/Screenshot 2024-07-03 at 13.41.51.png"
       ],
       tags: ["Web Design", "UI/UX", "Desenvolvimento"],
       links: [
@@ -186,21 +184,19 @@ document.addEventListener('DOMContentLoaded', function() {
       ],
       tags: ["Graphic design", "Event design", "Branding"],
       links: [
-        { text: "App Store", url: "https://example.com/tripplanner" },
-        { text: "Google Play", url: "https://example.com/tripplanner-android" }
+        
+        
       ]
     },
     {
-      title: "Rapsody Roullette",
+      title: "Rubik's Cube",
       description: "This project demonstrates the use of augmented reality (AR) technology applied to a poster design featuring a Rubik's Cube. By scanning a QR code and pointing at the poster, viewers activate an animation with the message, In every problem, there is a solution. This project combines graphic design and AR to create an engaging interactive experience, encouraging viewers to reflect on problem-solving in a creative way.",
       images: [
-        "./imagens/musicrandom.jpg",
-        "./imagens/rapsody-2.jpg",
-        "./imagens/rapsody-3.jpg"
+        "./imagens/Imprimir cartaz-01.jpg"
       ],
       tags: ["Augmented Reality", "Motion Graphics"],
       links: [
-        { text: "Ver Site", url: "https://example.com/rapsodyroullette" }
+        
       ]
     }
   ];
@@ -237,7 +233,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (prevButton && nextButton) {
       prevButton.addEventListener('click', () => {
         const activeImg = document.querySelector('#gallery-container img.active');
-        const images = document.querySelectorAll('#gallery-container img');
+        const images = document.querySelectorAll('#gallery-container1 img');
         if (!activeImg || images.length === 0) return;
         
         const currentIndex = Array.from(images).indexOf(activeImg);
@@ -247,7 +243,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
       nextButton.addEventListener('click', () => {
         const activeImg = document.querySelector('#gallery-container img.active');
-        const images = document.querySelectorAll('#gallery-container img');
+        const images = document.querySelectorAll('#gallery-container1 img');
         if (!activeImg || images.length === 0) return;
         
         const currentIndex = Array.from(images).indexOf(activeImg);
